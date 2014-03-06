@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package server;
 
 import java.io.BufferedReader;
@@ -13,45 +7,86 @@ import static server.Constans.*;
 
 /**
  *
- * @author b730
+ * @author b730 Browserdan gelen istekler tutulur. Gelen istek parse edilir.
+ * Parse edilen sonuç Response class'ında kullanılmak üzere URL değişkenine
+ * atanır.
+ *
  */
-
 public class Request {
 
-    private InputStream input;
+    private InputStream inputStream;
     private String url;
+    protected String URL;
 
-    public void setInput(InputStream input) {
-        this.input = input;
+    /**
+     * InputStream atanır.
+     *
+     * @param inputStream
+     */
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
     }
+
+    /**
+     * String "url" atanır.
+     *
+     * @param url
+     */
     public void setUrl(String url) {
         this.url = url;
     }
-    public InputStream getInput() {
-        return input;
+
+    /**
+     * Kullanılan InputStream değişkenini getirir.
+     *
+     * @return InputStream
+     */
+    public InputStream getInputStream() {
+        return inputStream;
     }
+
+    /**
+     * Kullanılan String "url" değişkenini getirir.
+     *
+     * @return
+     */
     public String getUrl() {
         return url;
-    }  
-    
-    public Request(InputStream input) throws IOException {
-        this.input = input;
-        parse();
     }
+
+    /**
+     * Request Constructor Class'ın tek constructer metodudur. Parametre olarak
+     * InputStream değişkenini alır. Çağrıldığı zaman kendi içinde "parse()"
+     * metodunu çağırır.
+     *
+     * @param inputStream
+     * @throws IOException
+     */
+    public Request(InputStream inputStream) throws IOException {
+        this.inputStream = inputStream;
+    }
+
+    /**
+     * InputStream'den request'i okur. Gelen karakter dizinini konsola bastırır.
+     * Request "url" ini parse eder ve alınan url'i "URL" değişkenine atar.
+     *
+     * @throws IOException
+     */
     public void parse() throws IOException {
-        String str=null;
+        String receivedMessage = null;
         byte[] buffer = new byte[1024];
-        
-        input.read(buffer);
-        str = new String(buffer);
-        
-        System.out.println("(--\n"+str+"\n--)");
-        
-        String [] inputList=str.split("\\s+");
-        if (inputList.length>1) {
-            url= inputList[1];
-        }else
-            url= null;
-        URL=url;
+
+        inputStream.read(buffer);
+        receivedMessage = new String(buffer);
+
+        System.out.println("(--\n" + receivedMessage + "\n--)");
+
+        String[] inputList = receivedMessage.split("\\s+");
+        if (inputList.length > 1) {
+            url = inputList[1];
+        } else {
+            url = null;
+        }
+        URL = url;
     }
 }
