@@ -20,6 +20,16 @@ public class WebServerTest
         super( testName );
     }
 
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
+    }
+
     /**
      * @return the suite of tests being tested
      */
@@ -35,4 +45,26 @@ public class WebServerTest
     {
         assertTrue( true );
     }
+
+    /**
+     * Test of main method, of class WebServer.
+     */
+    public void testMain() throws Exception {
+        System.out.println("main");
+        String[] args = null;
+        WebServer.main(args);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of loadProperties method, of class WebServer.
+     */
+    public void testLoadProperties() {
+        System.out.println("loadProperties");
+        WebServer.loadProperties();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+    
 }

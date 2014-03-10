@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
 
 /**
  *
@@ -41,20 +42,23 @@ public final class Request implements Runnable {
         try {
             startRequest();
         } catch (Exception e) {
-            System.out.println(e);
+            WebServer.logRequest.log(Level.ALL, "Thread start problem !!", e);
         }
     }
 
     private void startRequest() throws IOException, Exception {
 
-        InputStream inputStream = socket.getInputStream();
+        InputStream inputStream;
+        inputStream = socket.getInputStream();
 
         DataOutputStream dataOutputStream;
+
         dataOutputStream = new DataOutputStream(
                 socket.getOutputStream());
 
-        BufferedReader br = new BufferedReader(
-                new InputStreamReader(inputStream));
+        BufferedReader br;
+
+        br = new BufferedReader(new InputStreamReader(inputStream));
 
         /*
          // Gelen isteğin IP adresini yazdırma kısmı kodları
@@ -66,25 +70,41 @@ public final class Request implements Runnable {
         String lineRead = br.readLine();
 
         // Okunan ilk satır ekrana yazdırılır.
-        System.out.println();
-        System.out.println(lineRead);
+        System.out.println("\n" + lineRead);
 
-        // Talep parçalara bölünür.(Talep Örn.: "GET /index.html HTTP/1.1" )
-        // (alınması gereken dosya ismi: "/index.html")
-        StringTokenizer tokens = new StringTokenizer(lineRead);
-        tokens.nextToken();  // "GET /index.html HTTP/1.1" talebinin "GET" kısmı atlanır.
-        String fileName = tokens.nextToken(); // Talep edilen dosya adı("/index.html") alınır.
-
-        // Aranan dosyanın(file), 
-        // şuan içinde bulunulan klasör(directory) içinde olduğu belirtilir.
-        // işlem sonunda "./index.html" stringi oluşur.
-        fileName = "." + fileName;
+        // Talebin ilk satırı istenen dosya adını ayrıştırmak için 
+        // fonksiyona gönderilir. (Muhtemel talep: "GET /index.html HTTP/1.1")
+        // Fonksiyon return değeri olarak talep edilen dosya adını döndürür("./index.html").
+        WebServer.logRequest.entering("Request", "splitRequest(String )", lineRead);
+        String fileName = splitRequest(lineRead);
 
         String takenText = null;
         // Gelen metinin tamamı ekrana bastırılır.
         while ((takenText = br.readLine()).length() != 0) {
             System.out.println(takenText);
         }
+
+        WebServer.logRequest.entering("Request", "response(string fileName, DataOutputStream)", fileName);
+        response(fileName, dataOutputStream);
+
+        // Streamler ve soketler kapatılır.
+        dataOutputStream.close();
+        br.close();
+        socket.close();
+
+    }
+
+    /**
+     * Talebe göre cevap hazırlanır. Hazırlanan cevap parametre ile gelen stream
+     * üzerinden gönderilir.
+     *
+     * @param fileName
+     * @param dataOutputStream
+     * @throws IOException
+     * @throws Exception
+     */
+    private void response(String fileName, DataOutputStream dataOutputStream)
+            throws IOException, Exception {
 
         // Talep edilen dosya mevcut ise açılır. 
         // Talep edilen dosya mevcut değil ise FileNotFoundException verilir.
@@ -93,7 +113,7 @@ public final class Request implements Runnable {
         try {
             fileInputStream = new FileInputStream(fileName);
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+            WebServer.logRequest.log(Level.ALL, "Talep edilen dosya \"" + fileName + "\" bulunamadı!!", e);
             fileExists = false;
         }
 
@@ -106,10 +126,12 @@ public final class Request implements Runnable {
             statusLine = "HTTP/1.1 200 OK: ";
             contentTypeLine = "Content-Type: "
                     + createContentType(fileName) + CRLF;
+            WebServer.logRequest.info("Talep edilen " + fileName + " mevcut, cevap hazırlanıyor...");
         } else { // Talep edilen dosyanın mevcut OLMAMA durumu için hazırlanan cevap
             statusLine = "HTTP/1.1 404 Not Found: ";
             contentTypeLine = "Content-Type: text/html" + CRLF;
             entityBody = FILE_NOT_FOUND_MESSAGE;
+            WebServer.logRequest.info("Talep edilen " + fileName + " mevcut değil, cevap hazırlanıyor...");
         }
 
         // Status-Line istemciye gönderilir.
@@ -124,17 +146,22 @@ public final class Request implements Runnable {
         if (fileExists) {   // Talep edilen dosya mevcutsa gönderilir ve dosya stream'i kapatılır.
             sendBytes(fileInputStream, dataOutputStream);
             fileInputStream.close();
+            WebServer.logRequest.info("Talep edilen " + fileName + " mevcut, cevap gönderiliyor...");
         } else {    // Talep edilen dosya mevcut değilse OLMAMA durumu mesajı gönderilir.
             dataOutputStream.writeBytes(entityBody);
+            WebServer.logRequest.info("Talep edilen " + fileName + " mevcut değil, cevap gönderiliyor...");
         }
-
-        // Streamler ve soketler kapatılır.
-        dataOutputStream.close();
-        br.close();
-        socket.close();
     }
 
-    private static void sendBytes(FileInputStream fileInputStream, OutputStream outputStream)
+    /**
+     * Eğer talep edilen dosya mevcutsa buffer boyutu kadar parçalar halinde
+     * istemciye gönderilir.
+     *
+     * @param fileInputStream
+     * @param outputStream
+     * @throws Exception
+     */
+    private void sendBytes(FileInputStream fileInputStream, OutputStream outputStream)
             throws Exception {
 
         int numberOfBytes;
@@ -147,8 +174,14 @@ public final class Request implements Runnable {
         }
     }
 
-    // Gerekli MIME'ler ayarlanır. Talep edilen dosya content'ine göre cevap hazırlanır.
-    private static String createContentType(String fileName) {
+    /**
+     * Test kısmı yazıldı. Gerekli MIME'ler ayarlanır.
+     *
+     * @param fileName
+     * @return Talep edilen dosya tipine karşılık gönderilecek olan content-type
+     * string'i oluşturulur ve döndürülür.
+     */
+    public String createContentType(String fileName) {
 
         if (fileName.endsWith(".htm") || fileName.endsWith(".html")) {
             return "text/html";
@@ -160,5 +193,25 @@ public final class Request implements Runnable {
             return "text/gif";
         }
         return "application/octet-stream";
+    }
+
+    /**
+     * Test kısmı yazıldı.
+     *
+     * @param lineRead -> Talebin ilk satırını ifade eder.
+     * @return Talep edilen dosya adı döndürülür.
+     */
+    public String splitRequest(String lineRead) {
+
+        // Talep parçalara bölünür.(Talep Örn.: "GET /index.html HTTP/1.1" )
+        // (alınması gereken dosya ismi: "/index.html")
+        StringTokenizer tokens = new StringTokenizer(lineRead);
+        tokens.nextToken();  // "GET /index.html HTTP/1.1" talebinin "GET" kısmı atlanır.
+        String fileName = tokens.nextToken(); // Talep edilen dosya adı("/index.html") alınır.
+
+        // Aranan dosyanın(file), 
+        // şuan içinde bulunulan klasör(directory) içinde olduğu belirtilir.
+        // işlem sonunda "./index.html" stringi oluşur. 
+        return "." + fileName;
     }
 }
