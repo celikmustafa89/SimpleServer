@@ -214,9 +214,7 @@ public final class Request implements Runnable {
         if (fileName.compareTo("/") == 0) {
             fileName = fileName + "index.html";
         }
-//        if (fileName.compareTo(null) == 0) {
-//            fileName = "/index.html";
-//        }
+
         // Aranan dosyanın(file), 
         // şuan içinde bulunulan klasör(directory) içinde olduğu belirtilir.
         // işlem sonunda "./index.html" stringi oluşur. 
