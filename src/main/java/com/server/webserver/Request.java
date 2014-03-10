@@ -203,12 +203,20 @@ public final class Request implements Runnable {
      */
     public String splitRequest(String lineRead) {
 
+        
         // Talep parçalara bölünür.(Talep Örn.: "GET /index.html HTTP/1.1" )
         // (alınması gereken dosya ismi: "/index.html")
         StringTokenizer tokens = new StringTokenizer(lineRead);
         tokens.nextToken();  // "GET /index.html HTTP/1.1" talebinin "GET" kısmı atlanır.
         String fileName = tokens.nextToken(); // Talep edilen dosya adı("/index.html") alınır.
 
+        //varsayılan olarak index.html sayfasına yönlendirme kısmı
+        if (fileName.compareTo("/") == 0) {
+            fileName = fileName + "index.html";
+        }
+//        if (fileName.compareTo(null) == 0) {
+//            fileName = "/index.html";
+//        }
         // Aranan dosyanın(file), 
         // şuan içinde bulunulan klasör(directory) içinde olduğu belirtilir.
         // işlem sonunda "./index.html" stringi oluşur. 
