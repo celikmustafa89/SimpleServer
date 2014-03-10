@@ -1,4 +1,455 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
+<<<<<<< HEAD
+=======
+<record>
+  <date>2014-03-10T10:28:44</date>
+  <millis>1394440124118</millis>
+  <sequence>0</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>splitRequest(String )</method>
+  <thread>9</thread>
+  <message>ENTRY GET / HTTP/1.1</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:44</date>
+  <millis>1394440124129</millis>
+  <sequence>1</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>response(string fileName, DataOutputStream)</method>
+  <thread>9</thread>
+  <message>ENTRY ./index.html</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:44</date>
+  <millis>1394440124129</millis>
+  <sequence>2</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>9</thread>
+  <message>Talep edilen ./index.html mevcut, cevap hazırlanıyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:44</date>
+  <millis>1394440124144</millis>
+  <sequence>3</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>9</thread>
+  <message>Talep edilen ./index.html mevcut, cevap gönderiliyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:44</date>
+  <millis>1394440124196</millis>
+  <sequence>4</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>splitRequest(String )</method>
+  <thread>10</thread>
+  <message>ENTRY GET /images/cedric.jpg HTTP/1.1</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:44</date>
+  <millis>1394440124197</millis>
+  <sequence>5</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>response(string fileName, DataOutputStream)</method>
+  <thread>10</thread>
+  <message>ENTRY ./images/cedric.jpg</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:44</date>
+  <millis>1394440124197</millis>
+  <sequence>6</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>10</thread>
+  <message>Talep edilen ./images/cedric.jpg mevcut, cevap hazırlanıyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:44</date>
+  <millis>1394440124198</millis>
+  <sequence>7</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>10</thread>
+  <message>Talep edilen ./images/cedric.jpg mevcut, cevap gönderiliyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:55</date>
+  <millis>1394440135788</millis>
+  <sequence>8</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>splitRequest(String )</method>
+  <thread>11</thread>
+  <message>ENTRY GET / HTTP/1.1</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:55</date>
+  <millis>1394440135788</millis>
+  <sequence>9</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>response(string fileName, DataOutputStream)</method>
+  <thread>11</thread>
+  <message>ENTRY ./index.html</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:55</date>
+  <millis>1394440135788</millis>
+  <sequence>10</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>11</thread>
+  <message>Talep edilen ./index.html mevcut, cevap hazırlanıyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:55</date>
+  <millis>1394440135790</millis>
+  <sequence>11</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>11</thread>
+  <message>Talep edilen ./index.html mevcut, cevap gönderiliyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:55</date>
+  <millis>1394440135835</millis>
+  <sequence>12</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>splitRequest(String )</method>
+  <thread>12</thread>
+  <message>ENTRY GET /images/cedric.jpg HTTP/1.1</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:55</date>
+  <millis>1394440135836</millis>
+  <sequence>13</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>response(string fileName, DataOutputStream)</method>
+  <thread>12</thread>
+  <message>ENTRY ./images/cedric.jpg</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:55</date>
+  <millis>1394440135836</millis>
+  <sequence>14</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>12</thread>
+  <message>Talep edilen ./images/cedric.jpg mevcut, cevap hazırlanıyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:28:55</date>
+  <millis>1394440135838</millis>
+  <sequence>15</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>12</thread>
+  <message>Talep edilen ./images/cedric.jpg mevcut, cevap gönderiliyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:01</date>
+  <millis>1394440141030</millis>
+  <sequence>16</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>splitRequest(String )</method>
+  <thread>13</thread>
+  <message>ENTRY GET /index.html HTTP/1.1</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:01</date>
+  <millis>1394440141030</millis>
+  <sequence>17</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>response(string fileName, DataOutputStream)</method>
+  <thread>13</thread>
+  <message>ENTRY ./index.html</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:01</date>
+  <millis>1394440141030</millis>
+  <sequence>18</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>13</thread>
+  <message>Talep edilen ./index.html mevcut, cevap hazırlanıyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:01</date>
+  <millis>1394440141032</millis>
+  <sequence>19</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>13</thread>
+  <message>Talep edilen ./index.html mevcut, cevap gönderiliyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:01</date>
+  <millis>1394440141078</millis>
+  <sequence>20</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>splitRequest(String )</method>
+  <thread>14</thread>
+  <message>ENTRY GET /images/cedric.jpg HTTP/1.1</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:01</date>
+  <millis>1394440141079</millis>
+  <sequence>21</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>response(string fileName, DataOutputStream)</method>
+  <thread>14</thread>
+  <message>ENTRY ./images/cedric.jpg</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:01</date>
+  <millis>1394440141079</millis>
+  <sequence>22</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>14</thread>
+  <message>Talep edilen ./images/cedric.jpg mevcut, cevap hazırlanıyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:01</date>
+  <millis>1394440141081</millis>
+  <sequence>23</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>14</thread>
+  <message>Talep edilen ./images/cedric.jpg mevcut, cevap gönderiliyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:04</date>
+  <millis>1394440144282</millis>
+  <sequence>24</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>splitRequest(String )</method>
+  <thread>15</thread>
+  <message>ENTRY GET /indssex.html HTTP/1.1</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:04</date>
+  <millis>1394440144283</millis>
+  <sequence>25</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>response(string fileName, DataOutputStream)</method>
+  <thread>15</thread>
+  <message>ENTRY ./indssex.html</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:04</date>
+  <millis>1394440144284</millis>
+  <sequence>26</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>ALL</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>15</thread>
+  <message>Talep edilen dosya "./indssex.html" bulunamadı!!</message>
+  <exception>
+    <message>java.io.FileNotFoundException: ./indssex.html (No such file or directory)</message>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>open</method>
+    </frame>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>&lt;init&gt;</method>
+      <line>146</line>
+    </frame>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>&lt;init&gt;</method>
+      <line>101</line>
+    </frame>
+    <frame>
+      <class>com.server.webserver.Request</class>
+      <method>response</method>
+      <line>114</line>
+    </frame>
+    <frame>
+      <class>com.server.webserver.Request</class>
+      <method>startRequest</method>
+      <line>88</line>
+    </frame>
+    <frame>
+      <class>com.server.webserver.Request</class>
+      <method>run</method>
+      <line>43</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <method>run</method>
+      <line>744</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2014-03-10T10:29:04</date>
+  <millis>1394440144284</millis>
+  <sequence>27</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>15</thread>
+  <message>Talep edilen ./indssex.html mevcut değil, cevap hazırlanıyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:04</date>
+  <millis>1394440144286</millis>
+  <sequence>28</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>15</thread>
+  <message>Talep edilen ./indssex.html mevcut değil, cevap gönderiliyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:07</date>
+  <millis>1394440147339</millis>
+  <sequence>29</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>splitRequest(String )</method>
+  <thread>16</thread>
+  <message>ENTRY GET /indssesssx.html HTTP/1.1</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:07</date>
+  <millis>1394440147339</millis>
+  <sequence>30</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>FINER</level>
+  <class>Request</class>
+  <method>response(string fileName, DataOutputStream)</method>
+  <thread>16</thread>
+  <message>ENTRY ./indssesssx.html</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:07</date>
+  <millis>1394440147339</millis>
+  <sequence>31</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>ALL</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>16</thread>
+  <message>Talep edilen dosya "./indssesssx.html" bulunamadı!!</message>
+  <exception>
+    <message>java.io.FileNotFoundException: ./indssesssx.html (No such file or directory)</message>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>open</method>
+    </frame>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>&lt;init&gt;</method>
+      <line>146</line>
+    </frame>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>&lt;init&gt;</method>
+      <line>101</line>
+    </frame>
+    <frame>
+      <class>com.server.webserver.Request</class>
+      <method>response</method>
+      <line>114</line>
+    </frame>
+    <frame>
+      <class>com.server.webserver.Request</class>
+      <method>startRequest</method>
+      <line>88</line>
+    </frame>
+    <frame>
+      <class>com.server.webserver.Request</class>
+      <method>run</method>
+      <line>43</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <method>run</method>
+      <line>744</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2014-03-10T10:29:07</date>
+  <millis>1394440147340</millis>
+  <sequence>32</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>16</thread>
+  <message>Talep edilen ./indssesssx.html mevcut değil, cevap hazırlanıyor...</message>
+</record>
+<record>
+  <date>2014-03-10T10:29:07</date>
+  <millis>1394440147341</millis>
+  <sequence>33</sequence>
+  <logger>Request_Class_Logging</logger>
+  <level>INFO</level>
+  <class>com.server.webserver.Request</class>
+  <method>response</method>
+  <thread>16</thread>
+  <message>Talep edilen ./indssesssx.html mevcut değil, cevap gönderiliyor...</message>
+</record>
+>>>>>>> 7d9deac3851a98faf0a2b1076db41552accace68
 </log>
